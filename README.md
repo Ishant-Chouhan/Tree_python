@@ -1,2 +1,2 @@
 # Tree_python
-practicing graph data structue through python📈
+practicing graph data structure through python📈
