@@ -1,8 +1,8 @@
 class node:
     def __init__(self,data):
         self.data=data
-        self.lchild=None
-        self.rchild=None
+        self.left=None
+        self.right=None
     
 class BinaryTree:
     def __init__(self):
@@ -15,13 +15,13 @@ class BinaryTree:
             temp=self.root
             while temp.link!=None:
                 if newnode.data>=temp.data:
-                    temp=temp.rchild
+                    temp=temp.right
                 else:
-                    temp=temp.lchild
+                    temp=temp.left
 
             if newnode.data>=temp.data:
-                temp.rchild=newnode
+                temp.right=newnode
             else:
-                temp.lchild=newnode
+                temp.left=newnode
 
     
