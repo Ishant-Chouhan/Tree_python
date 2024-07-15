@@ -44,13 +44,29 @@ class BST:
                 print("search unsuccessfull...!!")
 
     def traversal(self):
-        self.inorder(self.root)
+        print("""press 1 for preorder traversal
+press 2 for inorder traversal
+press 3 for postorder traversal""")
+        choice=int(input("Enter your choice: "))
+        if choice==1:
+            self.preorder(self.root)
+        elif choice==2:
+            self.inorder(self.root)
+        elif choice==3:
+            self.postorder(self.root)
     def inorder(self,root):
-            if root:
+            if root is not None:
                 self.inorder(root.left)
                 print(root.item)
-                self.inorder(root.right)    
-                
+                self.inorder(root.right)  
+    def preorder(self,root):
+        if root:
+            print(root.item)
+            self.preorder(root.left)  
+            self.preorder(root.right)
+    
+    def postorder(self,root):
+        pass
 
 tree=BST()
 while True:
@@ -63,10 +79,6 @@ press 2 to perform searching""")
         tree.search(int(input("Enter element to be searched: ")))  
     elif choice==3:
         tree.traversal()
-    elif choice==4:
-        pass
-    elif choice==5:
-        pass
     else:
         print("Exit...") 
         break 
