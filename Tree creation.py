@@ -66,7 +66,10 @@ press 3 for postorder traversal""")
             self.preorder(root.right)
     
     def postorder(self,root):
-        pass
+        if root is not None:
+            self.postorder(root.left)
+            self.postorder(root.right)
+            print(root.item)
 
 tree=BST()
 while True:
