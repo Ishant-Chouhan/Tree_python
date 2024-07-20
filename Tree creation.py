@@ -49,32 +49,71 @@ press 2 for inorder traversal
 press 3 for postorder traversal""")
         choice=int(input("Enter your choice: "))
         if choice==1:
-            self.preorder(self.root)
+            self.preorder_wr(self.root)
         elif choice==2:
-            self.inorder(self.root)
+            self.inorder_wr(self.root)
         elif choice==3:
-            self.postorder(self.root)
-    def inorder(self,root):
+            self.postorder_wr(self.root)
+    def inorder(self,root):#using recursion
             if root is not None:
                 self.inorder(root.left)
                 print(root.item)
                 self.inorder(root.right)  
-    def preorder(self,root):
+    def preorder(self,root):#using recursion
         if root:
             print(root.item)
             self.preorder(root.left)  
             self.preorder(root.right)
     
-    def postorder(self,root):
+    def postorder(self,root):#using recursion
         if root is not None:
             self.postorder(root.left)
             self.postorder(root.right)
             print(root.item)
 
+    def inorder_wr(self,root):
+        stack=[]
+        result=[]
+        current=root
+        while current or stack:
+            while current:
+                stack.append(current)
+                current=current.left
+            
+            current=stack.pop()
+            result.append(current.item)
+            current=current.right
+        print(result)
+
+    def preorder_wr(self,root):
+        stack=[]
+        current=root
+        while current or stack:
+            while current:
+                 stack.append(current.item)
+                 current=current.left
+            current=current.right
+        print(stack)
+
+    def postorder_wr(self,root):
+        stack=[]
+        current=root
+        while current or stack:
+            while current:
+                if current.left.left==None or current.left.left in stack:
+                    temp=current
+                #stack.append(current.item)
+                current=current.left
+            stack.append(current)
+            current=temp
+            current=temp.right
+
 tree=BST()
 while True:
     print("""press 1 to add element in tree
-press 2 to perform searching""")
+press 2 to perform searching
+press 3 to perform travelsal
+press any other key to exit""")
     choice=int(input("enter your choice: "))
     if choice==1:
         tree.add(node(int(input("Enter data: "))))
