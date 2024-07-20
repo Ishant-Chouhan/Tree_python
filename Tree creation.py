@@ -87,13 +87,16 @@ press 3 for postorder traversal""")
 
     def preorder_wr(self,root):
         stack=[]
+        result=[]
         current=root
         while current or stack:
             while current:
-                 stack.append(current.item)
+                 stack.append(current)
                  current=current.left
+            current=stack.pop(0)
+            result.append(current.item)
             current=current.right
-        print(stack)
+        print(result)
 
     def postorder_wr(self,root):
         stack=[]
